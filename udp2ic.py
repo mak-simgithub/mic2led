@@ -2,7 +2,7 @@ import socket
 import smbus
 
 UDP_IP = "127.0.0.1"
-UDP_PORT = 5005
+UDP_PORT = 5000
 
 I2C_ADDR = 0x08
 bus = smbus.SMBus(1)
@@ -20,7 +20,7 @@ while True:
         print("Expected: index value")
         continue
 
-    index = int(parts[0]) & 0xFF
-    value = int(parts[1]) & 0xFF
+    index = int(parts[0].strip(" ;\n\r"))
+    value = int(parts[1].strip(" ;\n\r"))
 
     bus.write_i2c_block_data(I2C_ADDR, 0, [index, value])
