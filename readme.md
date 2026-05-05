@@ -1,4 +1,4 @@
-on raspi:
+on raspi: (mic2led1 and mic2led2, user pi, pw standard luca pi pw)
 sudo raspi-config
 
 enable vnc and i2c
