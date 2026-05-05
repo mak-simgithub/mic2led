@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5000
 
-PIN_A = 26   # channel 1
+PIN_A = 12   # channel 1
 PIN_B = 13   # channel 2
 
 GPIO.setmode(GPIO.BCM)
