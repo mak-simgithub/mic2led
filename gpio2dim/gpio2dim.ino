@@ -1,7 +1,7 @@
 #include <RBDdimmer.h>
 
 // 0–127 → 0-3.3v -> 0-1023/5*3.3=675 -> 65-85
-#define max_adc 675
+#define max_adc 1023
 #define min_dimm 65
 #define max_dimm 85
 
@@ -27,6 +27,7 @@ int mapDimmerValue(int v) {
 
 void setup() {
   Serial.begin(9600);
+  analogReference(EXTERNAL);
 
   for (int i = 0; i < NUM_CHANNELS; i++) {
     dimmers[i].begin(NORMAL_MODE, ON);
