@@ -36,7 +36,7 @@ def set_pwm(channel, value):
 while True:
     data, addr = sock.recvfrom(1024)
     try:
-        msg = data.decode().strip()
+        msg = data.decode().strip().replace(";", "")
         parts = msg.split()
 
         if len(parts) != 2:
