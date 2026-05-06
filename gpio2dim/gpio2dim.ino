@@ -1,6 +1,7 @@
 #include <RBDdimmer.h>
 
 // 0–127 → 0-3.3v -> 0-1023/5*3.3=675 -> 65-85
+#define min_adc 80
 #define max_adc 1023
 #define min_dimm 65
 #define max_dimm 85
@@ -22,7 +23,7 @@ dimmerLamp dimmers[NUM_CHANNELS] = {
 
 
 int mapDimmerValue(int v) {
-  return map(v, 0, max_adc, min_dimm, max_dimm);
+  return map(v, min_adc, max_adc, min_dimm, max_dimm);
 }
 
 void setup() {
@@ -38,22 +39,6 @@ void setup() {
 
 void loop() {
 
-  if (debugMode) {
-    // 0.2 Hz = 5 second period
-    float t = millis() / 1000.0;
-    float phase = 2.0 * PI * 0.2 * t;  // 0.2 Hz
-
-    for (int i = 0; i < NUM_CHANNELS; i++) {
-      float s = (sin(phase + i * PI/2) + 1.0) * 0.5;  // 0–1
-      int mapped = map(s*1000, 0, 1000, min_dimm, max_dimm);
-      Serial.println(mapped);
-      dimmers[i].setPower(mapped);
-      delay(10);
-    }
-    return;
-  }
-
-  // Normal mode: read analog inputs
   for (int i = 0; i < NUM_CHANNELS; i++) {
     int raw = analogRead(analogPins[i]);
     Serial.print(i);
