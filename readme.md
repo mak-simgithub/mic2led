@@ -34,3 +34,10 @@ git clone https://github.com/mak-simgithub/mic2led.git
 
 sudo apt install python3-rpi.gpio
 
+sudo mv mic2led.service /etc/systemd/system/mic2led.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable mic2led.service
+sudo systemctl start mic2led.service
+
+
