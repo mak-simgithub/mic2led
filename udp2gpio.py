@@ -29,10 +29,10 @@ def set_pwm(channel, value):
     duty = (value / 1024) * 100  # convert to 0–100%
 
     if channel == 1:
-        print("Channel 1: " + str(duty))
+        print("Channel 1: " + str(value))
         pwm_a.ChangeDutyCycle(duty)
     elif channel == 2:
-        print("Channel 2: " + str(duty))
+        print("Channel 2: " + str(value))
         pwm_b.ChangeDutyCycle(duty)
 
 while True:
