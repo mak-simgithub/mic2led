@@ -27,7 +27,6 @@ def set_pwm(channel, value):
     # clamp 0–1024
     value = max(0, min(1024, value))
     duty = (value / 1024) * 100  # convert to 0–100%
-    duty = 0
 
     if channel == 1:
         print("Channel 1: " + str(duty))
