@@ -22,7 +22,7 @@ sudo alsactl store
 
 curl -fsSL https://tailscale.com/install.sh | sh
 
-sudo tailscale up --auth-key=tskey-auth-kWtA6xaimv11CNTRL-TS3DmZV2bhaUCMSZuzSngaJyLp8EFu5qF
+sudo tailscale up --auth-key=KEY
 
 sudo apt install puredata
 
@@ -32,6 +32,8 @@ cd repos
 
 git clone https://github.com/mak-simgithub/mic2led.git
 
+cd mic2led/
+
 sudo apt install python3-rpi.gpio
 
 sudo mv mic2led.service /etc/systemd/system/mic2led.service
@@ -40,4 +42,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable mic2led.service
 sudo systemctl start mic2led.service
 
+sudo raspi-config
+Performance Options → Overlay File System → Enable
 
