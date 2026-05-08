@@ -1,13 +1,12 @@
 [Unit]
-Description=Start udp2gpio and basic.pd at boot
+Description=mic2led system
 After=network.target sound.target
 
 [Service]
 Type=simple
 User=pi
 WorkingDirectory=/home/pi/repos/mic2led
-ExecStart=/usr/bin/python3 /home/pi/repos/mic2led/udp2gpio.py
-ExecStartPost=/home/pi/repos/mic2led/start_audio.sh
+ExecStart=/home/pi/repos/mic2led/start_audio.sh
 Restart=always
 
 [Install]
