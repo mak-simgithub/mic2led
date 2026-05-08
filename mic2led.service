@@ -7,9 +7,8 @@ Type=simple
 User=pi
 WorkingDirectory=/home/pi/repos/mic2led
 ExecStart=/usr/bin/python3 /home/pi/repos/mic2led/udp2gpio.py
-ExecStartPost=/usr/bin/pd -nogui /home/pi/repos/mic2led/basic.pd
+ExecStartPost=/home/pi/repos/mic2led/start_audio.sh
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
